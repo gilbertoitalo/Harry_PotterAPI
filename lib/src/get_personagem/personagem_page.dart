@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:harrypotter_api/src/get_personagem/personagem_controller.dart';
 import 'package:harrypotter_api/src/get_personagem/personagem_repository.dart';
@@ -41,20 +40,24 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               return Card(
+                color: Colors.lightBlue,
                 margin: const EdgeInsets.all(16.0),
                 child: Row(
-                  children: [
-                    if (snapshot.data![index].image != null ||
-                        snapshot.data![index].image!.isNotEmpty)
-                      Image.network(
-                        snapshot.data![index].image!,
-                      ),
+                  
+                  children:
+                   [ 
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        snapshot.data![index].image!),
+                      radius: 40,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
+                            
                             snapshot.data![index].name!,
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
